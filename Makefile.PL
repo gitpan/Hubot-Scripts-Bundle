@@ -22,12 +22,13 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "DateTime" => 0,
     "DateTime::Format::Duration" => 0,
+    "Encode" => 0,
     "JSON::XS" => 0,
     "Redis" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.1",
+  "VERSION" => "0.0.2",
   "test" => {
     "TESTS" => ""
   }

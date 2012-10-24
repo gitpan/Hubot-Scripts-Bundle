@@ -1,3 +1,4 @@
+Changes
 INSTALL
 LICENSE
 MANIFEST
@@ -5,7 +6,7 @@ META.yml
 Makefile.PL
 README.md
 dist.ini
-lib/Hubot/Scripts/Bundle.pod
+lib/Hubot/Scripts/Bundle.pm
 lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/redisBrain.pm
 lib/Hubot/Scripts/uptime.pm
