@@ -2,7 +2,8 @@
 abstract: 'optional scripts for hubot'
 author:
   - 'Hyungsuk Hong <hshong@perl.kr>'
-build_requires: {}
+build_requires:
+  Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -20,4 +21,4 @@ requires:
   Redis: 0
   strict: 0
   warnings: 0
-version: 0.0.2
+version: 0.0.3

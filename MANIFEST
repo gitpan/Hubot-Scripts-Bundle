@@ -10,9 +10,11 @@ lib/Hubot/Scripts/Bundle.pm
 lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/redisBrain.pm
 lib/Hubot/Scripts/uptime.pm
+lib/Hubot/Scripts/whisper.pm
 misc/dzil/profiles/hubot/Module.pm
 misc/dzil/profiles/hubot/plugins.ini
 misc/dzil/profiles/hubot/profile.ini
 misc/dzil/profiles/hubot/skel/Changes
 misc/dzil/profiles/hubot/skel/weaver.ini
+t/00_compile.t
 weaver.ini

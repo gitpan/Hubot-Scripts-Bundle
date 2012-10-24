@@ -1,6 +1,6 @@
 package Hubot::Scripts::ping;
 {
-  $Hubot::Scripts::ping::VERSION = '0.0.2';
+  $Hubot::Scripts::ping::VERSION = '0.0.3';
 }
 use strict;
 use warnings;
