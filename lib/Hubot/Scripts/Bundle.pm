@@ -1,6 +1,6 @@
 package Hubot::Scripts::Bundle;
 {
-  $Hubot::Scripts::Bundle::VERSION = '0.0.3';
+  $Hubot::Scripts::Bundle::VERSION = '0.0.4';
 }
 
 1;
@@ -22,7 +22,8 @@ example F<hubot-scripts.json>
         "help",
         "ping",
         "uptime",
-        "whisper"
+        "whisper",
+        "eval"
     ]
 
 and then,
@@ -65,6 +66,13 @@ using redis as an external storage for robot's brain
     hubot> <text>
 
 speak <text> behind hubot
+
+=item eval
+
+    me> eval print $^V;
+    hubot> v5.14.2
+
+evaluate <code> and show the result via L<http://api.dan.co.jp/lleval.cgi>
 
 =back
 
