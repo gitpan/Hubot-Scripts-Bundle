@@ -1,6 +1,6 @@
 package Hubot::Scripts::whisper;
 {
-  $Hubot::Scripts::whisper::VERSION = '0.0.4';
+  $Hubot::Scripts::whisper::VERSION = '0.0.5';
 }
 use strict;
 use warnings;
@@ -10,6 +10,7 @@ sub load {
     $robot->whisper(
         sub {
             my $msg = shift;
+            return if $msg->message->user->{name} eq '*';
             $msg->send( $msg->message->text );
         }
     );
