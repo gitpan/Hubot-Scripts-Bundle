@@ -7,9 +7,11 @@ Makefile.PL
 README.md
 dist.ini
 lib/Hubot/Scripts/Bundle.pm
+lib/Hubot/Scripts/bugzilla.pm
 lib/Hubot/Scripts/eval.pm
 lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/redisBrain.pm
+lib/Hubot/Scripts/tell.pm
 lib/Hubot/Scripts/uptime.pm
 lib/Hubot/Scripts/whisper.pm
 misc/dzil/profiles/hubot/Module.pm

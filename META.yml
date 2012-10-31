@@ -14,11 +14,14 @@ meta-spec:
   version: 1.4
 name: Hubot-Scripts-Bundle
 requires:
+  AnyEvent::HTTP::ScopedClient: 0
+  Data::Printer: 0
   DateTime: 0
   DateTime::Format::Duration: 0
   Encode: 0
   JSON::XS: 0
   Redis: 0
   strict: 0
+  utf8: 0
   warnings: 0
-version: 0.0.5
+version: 0.0.6

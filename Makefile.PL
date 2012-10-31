@@ -22,15 +22,18 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Hubot::Scripts::Bundle",
   "PREREQ_PM" => {
+    "AnyEvent::HTTP::ScopedClient" => 0,
+    "Data::Printer" => 0,
     "DateTime" => 0,
     "DateTime::Format::Duration" => 0,
     "Encode" => 0,
     "JSON::XS" => 0,
     "Redis" => 0,
     "strict" => 0,
+    "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.5",
+  "VERSION" => "0.0.6",
   "test" => {
     "TESTS" => "t/*.t"
   }
