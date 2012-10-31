@@ -1,6 +1,6 @@
 package Hubot::Scripts::whisper;
 {
-  $Hubot::Scripts::whisper::VERSION = '0.0.6';
+  $Hubot::Scripts::whisper::VERSION = '0.0.7';
 }
 use strict;
 use warnings;

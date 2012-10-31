@@ -1,6 +1,6 @@
 package Hubot::Scripts::bugzilla;
 {
-  $Hubot::Scripts::bugzilla::VERSION = '0.0.6';
+  $Hubot::Scripts::bugzilla::VERSION = '0.0.7';
 }
 use utf8;
 use strict;
@@ -56,13 +56,12 @@ sub load {
 
 package JSONRPC;
 {
-  $JSONRPC::VERSION = '0.0.6';
+  $JSONRPC::VERSION = '0.0.7';
 }
 use strict;
 use warnings;
 use AnyEvent::HTTP::ScopedClient;
 use JSON::XS;
-use Data::Printer;
 
 sub new {
     my ($class, $ref) = @_;

@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
   "NAME" => "Hubot::Scripts::Bundle",
   "PREREQ_PM" => {
     "AnyEvent::HTTP::ScopedClient" => 0,
-    "Data::Printer" => 0,
     "DateTime" => 0,
     "DateTime::Format::Duration" => 0,
     "Encode" => 0,
@@ -33,7 +32,7 @@ my %WriteMakefileArgs = (
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.6",
+  "VERSION" => "0.0.7",
   "test" => {
     "TESTS" => "t/*.t"
   }
