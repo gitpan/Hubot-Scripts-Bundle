@@ -1,6 +1,6 @@
 package Hubot::Scripts::Bundle;
 {
-  $Hubot::Scripts::Bundle::VERSION = '0.0.7';
+  $Hubot::Scripts::Bundle::VERSION = '0.0.8';
 }
 
 1;

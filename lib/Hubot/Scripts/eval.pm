@@ -1,6 +1,6 @@
 package Hubot::Scripts::eval;
 {
-  $Hubot::Scripts::eval::VERSION = '0.0.7';
+  $Hubot::Scripts::eval::VERSION = '0.0.8';
 }
 use strict;
 use warnings;
@@ -12,7 +12,8 @@ sub load {
         qr/^eval:? on *$/i,
         sub {
             my $msg = shift;
-            $robot->brain->{data}{eval}{ $msg->message->user->{name} }{recording} = 1;
+            $robot->brain->{data}{eval}{ $msg->message->user->{name} }
+              {recording} = 1;
             $msg->send( 'OK, recording '
                   . $msg->message->user->{name}
                   . "'s codes for evaluate" );
@@ -24,15 +25,16 @@ sub load {
         sub {
             my $msg  = shift;
             my $code = join "\n",
-              @{ $robot->brain->{data}{eval}{ $msg->message->user->{name} }{code} ||=
-                  [] };
+              @{ $robot->brain->{data}{eval}{ $msg->message->user->{name} }
+                  {code} ||= [] };
             $msg->http('http://api.dan.co.jp/lleval.cgi')
               ->query( { s => "#!/usr/bin/perl\n$code" } )->get(
                 sub {
                     my ( $body, $hdr ) = @_;
                     return if ( !$body || $hdr->{Status} !~ m/^2/ );
                     my $data = decode_json($body);
-                    $msg->send( split /\n/, $data->{stdout} || $data->{stderr} );
+                    $msg->send( split /\n/,
+                        $data->{stdout} || $data->{stderr} );
                 }
               );
             delete $robot->brain->{data}{eval}{ $msg->message->user->{name} };
@@ -62,7 +64,8 @@ sub load {
                         my ( $body, $hdr ) = @_;
                         return if ( !$body || $hdr->{Status} !~ m/^2/ );
                         my $data = decode_json($body);
-                        $msg->send( split /\n/, $data->{stdout} || $data->{stderr} );
+                        $msg->send( split /\n/,
+                            $data->{stdout} || $data->{stderr} );
                     }
                   );
             }
@@ -72,12 +75,13 @@ sub load {
     $robot->catchAll(
         sub {
             my $msg = shift;
-            if ( $robot->brain->{data}{eval}{ $msg->message->user->{name} }{recording}
-              )
+            if ( $robot->brain->{data}{eval}{ $msg->message->user->{name} }
+                {recording} )
             {
                 if ( ref $msg->message eq 'Hubot::TextMessage' ) {
-                    push @{ $robot->brain->{data}{eval}{ $msg->message->user->{name} }
-                          {code} ||= [] }, $msg->message->text
+                    push @{ $robot->brain->{data}{eval}
+                          { $msg->message->user->{name} }{code} ||= [] },
+                      $msg->message->text
                       if $msg->message->text !~ /^eval:? on *$/;
                 }
             }
