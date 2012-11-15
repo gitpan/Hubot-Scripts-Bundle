@@ -1,6 +1,6 @@
 package Hubot::Scripts::tell;
 {
-  $Hubot::Scripts::tell::VERSION = '0.0.8';
+  $Hubot::Scripts::tell::VERSION = '0.0.9';
 }
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ sub load {
                 keys %{ $robot->brain->{data}{users} } )
             {
                 # XXX: hey, I can't detect if a user is awake or idle.
-                $msg->reply("<$recipient> $msg");
+                $msg->reply("<$recipient> $post");
             }
             else {
                 # XXX: hey, There is no time provided from adapters for messages.

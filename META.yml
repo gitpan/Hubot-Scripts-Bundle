@@ -3,7 +3,14 @@ abstract: 'optional scripts for hubot'
 author:
   - 'Hyungsuk Hong <hshong@perl.kr>'
 build_requires:
+  AnyEvent: 0
+  Hubot::Adapter: 0
+  Hubot::Message: 0
+  Hubot::Robot: 0
+  Hubot::User: 0
+  Moose: 0
   Test::More: 0
+  namespace::autoclean: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -23,4 +30,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.0.8
+version: 0.0.9

@@ -12,7 +12,14 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "optional scripts for hubot",
   "AUTHOR" => "Hyungsuk Hong <hshong\@perl.kr>",
   "BUILD_REQUIRES" => {
-    "Test::More" => 0
+    "AnyEvent" => 0,
+    "Hubot::Adapter" => 0,
+    "Hubot::Message" => 0,
+    "Hubot::Robot" => 0,
+    "Hubot::User" => 0,
+    "Moose" => 0,
+    "Test::More" => 0,
+    "namespace::autoclean" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -32,7 +39,7 @@ my %WriteMakefileArgs = (
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.8",
+  "VERSION" => "0.0.9",
   "test" => {
     "TESTS" => "t/*.t"
   }

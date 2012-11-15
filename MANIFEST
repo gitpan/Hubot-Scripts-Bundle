@@ -20,4 +20,10 @@ misc/dzil/profiles/hubot/profile.ini
 misc/dzil/profiles/hubot/skel/Changes
 misc/dzil/profiles/hubot/skel/weaver.ini
 t/00_compile.t
+t/01_bugzilla.t
+t/02_eval.t
+t/03_ping.t
+t/04_uptime.t
+t/05_tell.t
+t/lib/Hubot/Adapter/Helper.pm
 weaver.ini

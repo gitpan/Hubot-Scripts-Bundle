@@ -1,6 +1,6 @@
 package Hubot::Scripts::bugzilla;
 {
-  $Hubot::Scripts::bugzilla::VERSION = '0.0.8';
+  $Hubot::Scripts::bugzilla::VERSION = '0.0.9';
 }
 use utf8;
 use strict;
@@ -79,7 +79,7 @@ sub speak_bug {
 
 package JSONRPC;
 {
-  $JSONRPC::VERSION = '0.0.8';
+  $JSONRPC::VERSION = '0.0.9';
 }
 use strict;
 use warnings;
@@ -92,7 +92,7 @@ sub new {
     $ref->{username} ||= $ENV{HUBOT_BZ_USERNAME};
     $ref->{password} ||= $ENV{HUBOT_BZ_PASSWORD};
     my $self = bless $ref, $class;
-    $self->login;
+    $self->login if $ref->{username} && $ref->{password};
     return $self;
 }
 
