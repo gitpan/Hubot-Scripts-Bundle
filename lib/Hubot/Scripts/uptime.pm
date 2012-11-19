@@ -1,6 +1,6 @@
 package Hubot::Scripts::uptime;
 {
-  $Hubot::Scripts::uptime::VERSION = '0.0.10';
+  $Hubot::Scripts::uptime::VERSION = '0.0.11';
 }
 use strict;
 use warnings;

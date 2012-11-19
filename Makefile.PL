@@ -34,12 +34,13 @@ my %WriteMakefileArgs = (
     "DateTime::Format::Duration" => 0,
     "Encode" => 0,
     "JSON::XS" => 0,
+    "Lingua::KO::Hangul::Util" => 0,
     "Redis" => 0,
     "strict" => 0,
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.10",
+  "VERSION" => "0.0.11",
   "test" => {
     "TESTS" => "t/*.t"
   }

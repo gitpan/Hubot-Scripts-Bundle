@@ -1,7 +1,7 @@
+use utf8;
 use strict;
 use warnings;
 use Hubot::Robot;
-use Hubot::User;
 use lib 't/lib';
 use Test::More tests => 3;
 
@@ -12,12 +12,10 @@ my $robot = Hubot::Robot->new(
     }
 );
 
-$robot->loadHubotScripts( [ "help", "tell" ] );
-$robot->adapter->interval(0.2);
-$robot->userForId( 'misskim', {} );
+$robot->loadHubotScripts( [ "help", "macboogi" ] );
 
 push @{ $robot->{receive} },
-  ( 'hubot help tell', 'hubot tell misskim hi', 'hubot tell aanoaa hi', );
+  ( 'hubot help mac', 'use catalyst.mac', '안녕하세요.mac', );
 
 $robot->run;
 
@@ -26,9 +24,7 @@ $got = shift @{ $robot->{sent} };
 ok( "@$got", 'containing help messages' );
 
 $got = shift @{ $robot->{sent} };
-like( "@$got", qr/hi/, 'pass message directly if user exists' );
+like( "@$got", qr/USE CATALYST/, 'converted lower to upper' );
 
 $got = shift @{ $robot->{sent} };
-like( "@$got", qr/OK/, 'robot should respond to telling message' );
-
-# TODO: should emit Hubot::EnterMessage
+like( "@$got", qr/아ㄴ녀ㅇ하세요/, 'hangul have been macboogified' );

@@ -10,6 +10,7 @@ lib/Hubot/Scripts/Bundle.pm
 lib/Hubot/Scripts/bugzilla.pm
 lib/Hubot/Scripts/eval.pm
 lib/Hubot/Scripts/googleImage.pm
+lib/Hubot/Scripts/macboogi.pm
 lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/redisBrain.pm
 lib/Hubot/Scripts/tell.pm
@@ -27,5 +28,6 @@ t/03_ping.t
 t/04_uptime.t
 t/05_tell.t
 t/06_googleImage.t
+t/07_macboogi.t
 t/lib/Hubot/Adapter/Helper.pm
 weaver.ini
