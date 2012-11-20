@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "optional scripts for hubot",
-  "AUTHOR" => "Hyungsuk Hong <hshong\@perl.kr>",
+  "AUTHOR" => "Hyungsuk Hong <hshong\@perl.kr>, Hojung Youn <am0c\@perl.kr>",
   "BUILD_REQUIRES" => {
     "AnyEvent" => 0,
     "Hubot::Adapter" => 0,
@@ -36,11 +36,12 @@ my %WriteMakefileArgs = (
     "JSON::XS" => 0,
     "Lingua::KO::Hangul::Util" => 0,
     "Redis" => 0,
+    "Try::Tiny" => 0,
     "strict" => 0,
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0.11",
+  "VERSION" => "0.0.12",
   "test" => {
     "TESTS" => "t/*.t"
   }

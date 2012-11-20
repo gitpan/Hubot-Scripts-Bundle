@@ -1,6 +1,6 @@
 package Hubot::Scripts::googleImage;
 {
-  $Hubot::Scripts::googleImage::VERSION = '0.0.11';
+  $Hubot::Scripts::googleImage::VERSION = '0.0.12';
 }
 use strict;
 use warnings;
@@ -13,6 +13,7 @@ sub load {
         sub {
             my $msg = shift;
             imageMe( $msg, $msg->match->[2], sub { $msg->send(shift) } );
+            $msg->message->finish;
         }
     );
 
@@ -21,6 +22,7 @@ sub load {
         sub {
             my $msg = shift;
             imageMe( $msg, $msg->match->[0], 1, sub { $msg->send(shift) } );
+            $msg->message->finish;
         }
     );
 
@@ -39,6 +41,8 @@ sub load {
                 imageMe( $msg, $imagery, 0, 1,
                     sub { $msg->send("$mustachify$imagery") } );
             }
+
+            $msg->message->finish;
         }
     );
 }
