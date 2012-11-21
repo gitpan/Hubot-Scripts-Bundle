@@ -1,4 +1,3 @@
-use utf8;
 use strict;
 use warnings;
 use Hubot::Robot;
@@ -14,14 +13,16 @@ my $robot = Hubot::Robot->new(
 
 $robot->loadHubotScripts( [ "help", "blacklist" ] );
 
+$ENV{HUBOT_BLACKLIST_MANAGER} = 'helper';
+
 push @{ $robot->{receive} },
   (
-      'hubot help blacklist',
-      'hubot blacklist add hshong',
-      'hubot blacklist',
-      'hubot blacklist del 0',
-      'hubot blacklist subscribe',
-      'hubot blacklist unsubscribe',
+    'hubot help blacklist',
+    'hubot blacklist add hshong',
+    'hubot blacklist',
+    'hubot blacklist del 0',
+    'hubot blacklist subscribe',
+    'hubot blacklist unsubscribe',
   );
 
 $robot->run;

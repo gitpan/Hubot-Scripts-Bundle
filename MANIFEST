@@ -6,7 +6,6 @@ META.yml
 Makefile.PL
 README.md
 dist.ini
-hubot-scripts.json
 lib/Hubot/Scripts/Bundle.pm
 lib/Hubot/Scripts/blacklist.pm
 lib/Hubot/Scripts/bugzilla.pm
@@ -32,5 +31,6 @@ t/05_tell.t
 t/06_googleImage.t
 t/07_macboogi.t
 t/08_blacklist.t
+t/09_blacklist_permission.t
 t/lib/Hubot/Adapter/Helper.pm
 weaver.ini
