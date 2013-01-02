@@ -1,6 +1,6 @@
 package Hubot::Scripts::tell;
 {
-  $Hubot::Scripts::tell::VERSION = '0.0.14';
+  $Hubot::Scripts::tell::VERSION = '0.1.0';
 }
 use strict;
 use warnings;
@@ -16,10 +16,10 @@ sub load {
             my ( $post, $recipient ) = ( $msg->match->[0], $msg->match->[1] );
 
             # XXX: hey, There should be generalized nick matchers, supplied from each adapters.
-            if ( my ($user) = grep /^$recipient$/i,
-                keys %{ $robot->brain->{data}{users} } )
+            # $robot->exist($room, $nick)
+            if ( my ($user) = $robot->userForName($recipient)
+                and $msg->exist($recipient) )
             {
-                # XXX: hey, I can't detect if a user is awake or idle.
                 $msg->reply("<$recipient> $post");
             }
             else {

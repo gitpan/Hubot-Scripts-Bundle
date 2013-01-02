@@ -1,6 +1,6 @@
 package Hubot::Scripts::uptime;
 {
-  $Hubot::Scripts::uptime::VERSION = '0.0.14';
+  $Hubot::Scripts::uptime::VERSION = '0.1.0';
 }
 use strict;
 use warnings;
@@ -27,6 +27,7 @@ sub uptimeMe {
       DateTime::Format::Duration->new(
         pattern => '%Y years, %m months, %e days, '
           . '%H hours, %M minutes, %S seconds' );
+    $d->set_normalizing(1);
     $cb->( "I've been sentient for " . $d->format_duration($duration) );
 }
 

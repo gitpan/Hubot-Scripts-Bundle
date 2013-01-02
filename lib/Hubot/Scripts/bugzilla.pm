@@ -1,6 +1,6 @@
 package Hubot::Scripts::bugzilla;
 {
-  $Hubot::Scripts::bugzilla::VERSION = '0.0.14';
+  $Hubot::Scripts::bugzilla::VERSION = '0.1.0';
 }
 use utf8;
 use strict;
@@ -21,22 +21,24 @@ sub load {
 
     my ( $class, $robot ) = @_;
     $robot->hear(
-        qr/^bug ([0-9a-z-A-Z]+)/i,
+        qr/b(?:ug|z) ([0-9a-z-A-Z ]+)/i,
         sub {
             my $msg = shift;
-            $client->call(
-                'Bug.get',
-                { ids => [ $msg->match->[0] ] },
-                sub {
-                    my ( $body, $hdr ) = @_;
-                    speak_bug( $msg, $body, $hdr );
-                }
-            );
+            for my $query ( split / /, $msg->match->[0] ) {
+                $client->call(
+                    'Bug.get',
+                    { ids => [$query] },
+                    sub {
+                        my ( $body, $hdr ) = @_;
+                        speak_bug( $msg, $body, $hdr );
+                    }
+                );
+            }
         }
     );
 
     $robot->hear(
-        qr/^bug search (.+)/,
+        qr/^b(?:ug|z) search (.+)/,
         sub {
             my $msg = shift;
             $client->call(
@@ -51,7 +53,7 @@ sub load {
     );
 
     $robot->hear(
-        qr/show_bug\.cgi\?id=([0-9]+)$/,
+        qr/show_bug\.cgi\?id=([0-9]+)/,
         sub {
             my $msg = shift;
             $msg->message->finish;
@@ -71,15 +73,21 @@ sub speak_bug {
     my ( $msg, $body, $hdr ) = @_;
     my $data = decode_json($body);
     my $bug = @{ $data->{result}{bugs} ||= [] }[0];
-    $msg->send( sprintf "#%s %s - [%s, %s, %s]",
-        $bug->{id}, $bug->{summary}, $bug->{status}, $bug->{assigned_to},
-        $PRIORITY_MAP{ $bug->{priority} } )
-      if $bug;
+    $msg->send(
+        sprintf "#%s [%s-%s] %s - [%s, %s, %s]",
+        $bug->{id},
+        $bug->{product},
+        $bug->{component},
+        $bug->{summary},
+        $bug->{status},
+        $bug->{assigned_to},
+        $PRIORITY_MAP{ $bug->{priority} }
+    ) if $bug;
 }
 
 package JSONRPC;
 {
-  $JSONRPC::VERSION = '0.0.14';
+  $JSONRPC::VERSION = '0.1.0';
 }
 use strict;
 use warnings;
@@ -144,9 +152,9 @@ Hubot::Scripts::bugzilla
 
 =head1 SYNOPSIS
 
-    bug (<bug id>|<keyword>) - retrun bug summary, status, assignee and priority if exist
-    bug search <keyword>     - retrun bug summary, status, assignee and priority if exist
-    bug <number> - show the bug title.
+    bug(or bz) (<bug id>|<keyword>) - retrun bug summary, status, assignee and priority if exist
+    bug(or bz) search <keyword>     - retrun bug summary, status, assignee and priority if exist
+    bug(or bz) <number> - show the bug title. (support multiple)
 
 =head1 CONFIGURATION
 
