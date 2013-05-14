@@ -1,6 +1,6 @@
 package Hubot::Scripts::macboogi;
 {
-  $Hubot::Scripts::macboogi::VERSION = '0.1.1';
+  $Hubot::Scripts::macboogi::VERSION = '0.1.2';
 }
 use utf8;
 use strict;

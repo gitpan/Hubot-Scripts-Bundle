@@ -1,6 +1,6 @@
 package Hubot::Scripts::Bundle;
 {
-  $Hubot::Scripts::Bundle::VERSION = '0.1.1';
+  $Hubot::Scripts::Bundle::VERSION = '0.1.2';
 }
 
 1;
@@ -22,7 +22,6 @@ example F<hubot-scripts.json>
         "help",
         "ping",
         "uptime",
-        "whisper",
         "eval",
 	    "tell"
     ]
@@ -59,14 +58,6 @@ using redis as an external storage for robot's brain
 
     me> hubot: uptime
     hubot> I've been sentient for 0 years, 00 months, 2 days, 00 hours, 252 minutes, 07 seconds
-
-=item whisper
-
-    # IRC only
-    me> /msg hubot <channel> <text>
-    hubot> <text>
-
-speak <text> behind hubot
 
 =item eval
 
