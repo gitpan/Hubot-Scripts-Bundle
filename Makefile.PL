@@ -20,6 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Hubot::Scripts::Bundle",
   "PREREQ_PM" => {
+    "AnyEvent" => 0,
     "AnyEvent::HTTP::ScopedClient" => 0,
     "DateTime" => 0,
     "DateTime::Format::Duration" => 0,
@@ -34,7 +35,6 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "AnyEvent" => 0,
     "Hubot::Adapter" => 0,
     "Hubot::Message" => 0,
     "Hubot::Robot" => 0,
@@ -43,7 +43,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "namespace::autoclean" => 0
   },
-  "VERSION" => "0.1.2",
+  "VERSION" => "0.1.3",
   "test" => {
     "TESTS" => "t/*.t"
   }

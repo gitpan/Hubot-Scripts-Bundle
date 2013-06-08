@@ -1,6 +1,6 @@
 package Hubot::Scripts::tell;
 {
-  $Hubot::Scripts::tell::VERSION = '0.1.2';
+  $Hubot::Scripts::tell::VERSION = '0.1.3';
 }
 use strict;
 use warnings;

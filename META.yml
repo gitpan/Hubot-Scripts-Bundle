@@ -4,7 +4,6 @@ author:
   - 'Hyungsuk Hong <hshong@perl.kr>'
   - 'Hojung Youn <amoc.yn@gmail.com>'
 build_requires:
-  AnyEvent: 0
   Hubot::Adapter: 0
   Hubot::Message: 0
   Hubot::Robot: 0
@@ -22,6 +21,7 @@ meta-spec:
   version: 1.4
 name: Hubot-Scripts-Bundle
 requires:
+  AnyEvent: 0
   AnyEvent::HTTP::ScopedClient: 0
   DateTime: 0
   DateTime::Format::Duration: 0
@@ -34,4 +34,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.1.2
+version: 0.1.3

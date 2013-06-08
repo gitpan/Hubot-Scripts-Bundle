@@ -1,6 +1,6 @@
 package Hubot::Scripts::blacklist;
 {
-  $Hubot::Scripts::blacklist::VERSION = '0.1.2';
+  $Hubot::Scripts::blacklist::VERSION = '0.1.3';
 }
 use strict;
 use warnings;
