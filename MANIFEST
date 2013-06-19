@@ -17,6 +17,7 @@ lib/Hubot/Scripts/macboogi.pm
 lib/Hubot/Scripts/op.pm
 lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/redisBrain.pm
+lib/Hubot/Scripts/storable.pm
 lib/Hubot/Scripts/tell.pm
 lib/Hubot/Scripts/uptime.pm
 misc/dzil/profiles/hubot/Module.pm

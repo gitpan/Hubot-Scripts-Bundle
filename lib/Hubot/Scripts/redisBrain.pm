@@ -1,6 +1,6 @@
 package Hubot::Scripts::redisBrain;
 {
-  $Hubot::Scripts::redisBrain::VERSION = '0.1.3';
+  $Hubot::Scripts::redisBrain::VERSION = '0.1.4';
 }
 use strict;
 use warnings;

@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
     "Lingua::KO::Hangul::Util" => 0,
     "List::Util" => 0,
     "Redis" => 0,
+    "Storable" => 0,
     "Try::Tiny" => 0,
     "strict" => 0,
     "utf8" => 0,
@@ -43,7 +44,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "namespace::autoclean" => 0
   },
-  "VERSION" => "0.1.3",
+  "VERSION" => "0.1.4",
   "test" => {
     "TESTS" => "t/*.t"
   }

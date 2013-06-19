@@ -1,6 +1,6 @@
 package Hubot::Scripts::dice;
 {
-  $Hubot::Scripts::dice::VERSION = '0.1.3';
+  $Hubot::Scripts::dice::VERSION = '0.1.4';
 }
 use strict;
 use warnings;

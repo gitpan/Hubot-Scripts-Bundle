@@ -1,6 +1,6 @@
 package Hubot::Scripts::Bundle;
 {
-  $Hubot::Scripts::Bundle::VERSION = '0.1.3';
+  $Hubot::Scripts::Bundle::VERSION = '0.1.4';
 }
 
 1;
@@ -76,6 +76,10 @@ Tell Hubot to send a user a message when present in the room
 
     me> bug <id>|<keyword>
     me> bug search <keyword>
+
+=item storable
+
+using file as an external storage via L<Storable> for robot's brain
 
 =back
 
