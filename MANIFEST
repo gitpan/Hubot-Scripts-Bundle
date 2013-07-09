@@ -16,6 +16,7 @@ lib/Hubot/Scripts/googleImage.pm
 lib/Hubot/Scripts/macboogi.pm
 lib/Hubot/Scripts/op.pm
 lib/Hubot/Scripts/ping.pm
+lib/Hubot/Scripts/print.pm
 lib/Hubot/Scripts/redisBrain.pm
 lib/Hubot/Scripts/storable.pm
 lib/Hubot/Scripts/tell.pm
@@ -37,5 +38,6 @@ t/08_blacklist.t
 t/09_blacklist_permission.t
 t/10_backup.t
 t/11_dice.t
+t/12_print.t
 t/lib/Hubot/Adapter/Helper.pm
 weaver.ini

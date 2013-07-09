@@ -1,6 +1,6 @@
 package Hubot::Scripts::bugzilla;
 {
-  $Hubot::Scripts::bugzilla::VERSION = '0.1.4';
+  $Hubot::Scripts::bugzilla::VERSION = '0.1.5';
 }
 use utf8;
 use strict;
@@ -87,7 +87,7 @@ sub speak_bug {
 
 package JSONRPC;
 {
-  $JSONRPC::VERSION = '0.1.4';
+  $JSONRPC::VERSION = '0.1.5';
 }
 use strict;
 use warnings;
