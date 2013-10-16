@@ -3,6 +3,7 @@ abstract: 'optional scripts for hubot'
 author:
   - 'Hyungsuk Hong <hshong@perl.kr>'
   - 'Hojung Youn <amoc.yn@gmail.com>'
+  - 'Jonas Genannt <jonas@brachium-system.net>'
 build_requires:
   Hubot::Adapter: 0
   Hubot::Message: 0
@@ -10,11 +11,12 @@ build_requires:
   Hubot::User: 0
   Moose: 0
   Test::More: 0
+  lib: 0
   namespace::autoclean: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.131560'
+generated_by: 'Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132661'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -35,4 +37,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.1.5
+version: 0.1.6

@@ -1,6 +1,6 @@
 package Hubot::Scripts::backup;
 {
-  $Hubot::Scripts::backup::VERSION = '0.1.5';
+  $Hubot::Scripts::backup::VERSION = '0.1.6';
 }
 use strict;
 use warnings;

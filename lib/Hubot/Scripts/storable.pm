@@ -1,6 +1,6 @@
 package Hubot::Scripts::storable;
 {
-  $Hubot::Scripts::storable::VERSION = '0.1.5';
+  $Hubot::Scripts::storable::VERSION = '0.1.6';
 }
 use strict;
 use warnings;
