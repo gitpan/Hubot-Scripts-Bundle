@@ -5,7 +5,6 @@ MANIFEST
 META.yml
 Makefile.PL
 README.md
-cpanfile
 dist.ini
 lib/Hubot/Scripts/Bundle.pm
 lib/Hubot/Scripts/backup.pm
@@ -20,6 +19,7 @@ lib/Hubot/Scripts/ping.pm
 lib/Hubot/Scripts/print.pm
 lib/Hubot/Scripts/redisBrain.pm
 lib/Hubot/Scripts/rules.pm
+lib/Hubot/Scripts/sayhttpd.pm
 lib/Hubot/Scripts/storable.pm
 lib/Hubot/Scripts/tell.pm
 lib/Hubot/Scripts/uptime.pm
@@ -42,5 +42,6 @@ t/10_backup.t
 t/11_dice.t
 t/12_print.t
 t/13_rules.t
+t/14_sayhttpd.pm
 t/lib/Hubot/Adapter/Helper.pm
 weaver.ini

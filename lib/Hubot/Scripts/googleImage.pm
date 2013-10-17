@@ -1,6 +1,6 @@
 package Hubot::Scripts::googleImage;
 {
-  $Hubot::Scripts::googleImage::VERSION = '0.1.6';
+  $Hubot::Scripts::googleImage::VERSION = '0.1.7';
 }
 use strict;
 use warnings;

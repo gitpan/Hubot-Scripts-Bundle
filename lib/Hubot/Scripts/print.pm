@@ -1,6 +1,6 @@
 package Hubot::Scripts::print;
 {
-  $Hubot::Scripts::print::VERSION = '0.1.6';
+  $Hubot::Scripts::print::VERSION = '0.1.7';
 }
 use strict;
 use warnings;
