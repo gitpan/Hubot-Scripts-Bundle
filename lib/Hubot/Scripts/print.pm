@@ -1,27 +1,28 @@
 package Hubot::Scripts::print;
 {
-  $Hubot::Scripts::print::VERSION = '0.1.7';
+  $Hubot::Scripts::print::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
 use JSON::XS;
 
 sub load {
-    my ($class, $robot) = @_;
+    my ( $class, $robot ) = @_;
     $robot->hear(
         qr/^(?:print|say):? (.+)/i,
         sub {
             my $msg  = shift;
             my $code = $msg->match->[0];
             $msg->http('http://api.dan.co.jp/lleval.cgi')
-              ->query({s => "#!/usr/bin/perl\nprint $code\n"})->get(
+                ->query( { s => "#!/usr/bin/perl\nprint $code\n" } )->get(
                 sub {
-                    my ($body, $hdr) = @_;
-                    return if (!$body || $hdr->{Status} !~ m/^2/);
+                    my ( $body, $hdr ) = @_;
+                    return if ( !$body || $hdr->{Status} !~ m/^2/ );
                     my $data = decode_json($body);
-                    $msg->send(split /\n/, $data->{stdout} || $data->{stderr});
+                    $msg->send( split /\n/,
+                        $data->{stdout} || $data->{stderr} );
                 }
-              );
+                );
         }
     );
 }
@@ -31,6 +32,10 @@ sub load {
 =head1 NAME
 
 Hubot::Scripts::print
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

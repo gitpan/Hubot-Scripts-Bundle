@@ -1,6 +1,6 @@
 package Hubot::Scripts::googleImage;
 {
-  $Hubot::Scripts::googleImage::VERSION = '0.1.7';
+  $Hubot::Scripts::googleImage::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -53,11 +53,11 @@ sub imageMe {
     $cb = $faces if defined $faces && ref $faces eq 'CODE';
     my $q = { v => '1.0', rsz => '8', q => $query, safe => 'active' };
     $q->{as_filetype} = 'gif'
-      if defined $animated && ref $animated ne 'CODE' && $animated == 1;
+        if defined $animated && ref $animated ne 'CODE' && $animated == 1;
     $q->{imgtype} = 'face'
-      if defined $faces && ref $faces ne 'CODE' && $faces == 1;
+        if defined $faces && ref $faces ne 'CODE' && $faces == 1;
     $msg->http('http://ajax.googleapis.com/ajax/services/search/images')
-      ->query($q)->get(
+        ->query($q)->get(
         sub {
             my ( $body, $hdr ) = @_;
             my $images = decode_json($body);
@@ -67,7 +67,7 @@ sub imageMe {
                 $cb->( $image->{unescapedUrl} );
             }
         }
-      );
+        );
 }
 
 1;
@@ -75,6 +75,10 @@ sub imageMe {
 =head1 NAME
 
 Hubot::Scripts::googleImage - A way to interact with the Google Images API.
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

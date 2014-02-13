@@ -1,6 +1,6 @@
 package Hubot::Scripts::dice;
 {
-  $Hubot::Scripts::dice::VERSION = '0.1.7';
+  $Hubot::Scripts::dice::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -22,8 +22,8 @@ sub load {
 }
 
 sub roll {
-    my $max = shift;
-    my @pool = shuffle 1..$max;
+    my $max  = shift;
+    my @pool = shuffle 1 .. $max;
     return pop @pool;
 }
 
@@ -32,6 +32,10 @@ sub roll {
 =head1 NAME
 
 Hubot::Scripts::dice
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

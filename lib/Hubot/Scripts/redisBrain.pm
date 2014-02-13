@@ -1,6 +1,6 @@
 package Hubot::Scripts::redisBrain;
 {
-  $Hubot::Scripts::redisBrain::VERSION = '0.1.7';
+  $Hubot::Scripts::redisBrain::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -31,6 +31,10 @@ sub load {
 =head1 NAME
 
 Hubot::Scripts::redisBrain
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

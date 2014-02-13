@@ -1,6 +1,6 @@
 package Hubot::Scripts::Bundle;
 {
-  $Hubot::Scripts::Bundle::VERSION = '0.1.7';
+  $Hubot::Scripts::Bundle::VERSION = '0.1.8';
 }
 
 1;
@@ -12,6 +12,10 @@ package Hubot::Scripts::Bundle;
 =head1 NAME
 
 Hubot::Scripts::Bundle - optional scripts for hubot
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

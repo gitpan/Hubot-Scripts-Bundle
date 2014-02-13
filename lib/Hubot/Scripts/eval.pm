@@ -1,6 +1,6 @@
 package Hubot::Scripts::eval;
 {
-  $Hubot::Scripts::eval::VERSION = '0.1.7';
+  $Hubot::Scripts::eval::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -13,10 +13,10 @@ sub load {
         sub {
             my $msg = shift;
             $robot->brain->{data}{eval}{ $msg->message->user->{name} }
-              {recording} = 1;
+                {recording} = 1;
             $msg->send( 'OK, recording '
-                  . $msg->message->user->{name}
-                  . "'s codes for evaluate" );
+                    . $msg->message->user->{name}
+                    . "'s codes for evaluate" );
         }
     );
 
@@ -25,10 +25,10 @@ sub load {
         sub {
             my $msg  = shift;
             my $code = join "\n",
-              @{ $robot->brain->{data}{eval}{ $msg->message->user->{name} }
-                  {code} ||= [] };
+                @{ $robot->brain->{data}{eval}{ $msg->message->user->{name} }
+                    {code} ||= [] };
             $msg->http('http://api.dan.co.jp/lleval.cgi')
-              ->query( { s => "#!/usr/bin/perl\n$code" } )->get(
+                ->query( { s => "#!/usr/bin/perl\n$code" } )->get(
                 sub {
                     my ( $body, $hdr ) = @_;
                     return if ( !$body || $hdr->{Status} !~ m/^2/ );
@@ -36,7 +36,7 @@ sub load {
                     $msg->send( split /\n/,
                         $data->{stdout} || $data->{stderr} );
                 }
-              );
+                );
             delete $robot->brain->{data}{eval}{ $msg->message->user->{name} };
         }
     );
@@ -47,8 +47,8 @@ sub load {
             my $msg = shift;
             delete $robot->brain->{data}{eval}{ $msg->message->user->{name} };
             $msg->send( 'canceled '
-                  . $msg->message->user->{name}
-                  . "'s evaluation recording" );
+                    . $msg->message->user->{name}
+                    . "'s evaluation recording" );
         }
     );
 
@@ -59,7 +59,7 @@ sub load {
             my $code = $msg->match->[0];
             if ( $code !~ m/^(?:on|off|finish|done|cancel)$/ ) {
                 $msg->http('http://api.dan.co.jp/lleval.cgi')
-                  ->query( { s => "#!/usr/bin/perl\n$code" } )->get(
+                    ->query( { s => "#!/usr/bin/perl\n$code" } )->get(
                     sub {
                         my ( $body, $hdr ) = @_;
                         return if ( !$body || $hdr->{Status} !~ m/^2/ );
@@ -67,7 +67,7 @@ sub load {
                         $msg->send( split /\n/,
                             $data->{stdout} || $data->{stderr} );
                     }
-                  );
+                    );
             }
         }
     );
@@ -80,9 +80,9 @@ sub load {
             {
                 if ( ref $msg->message eq 'Hubot::TextMessage' ) {
                     push @{ $robot->brain->{data}{eval}
-                          { $msg->message->user->{name} }{code} ||= [] },
-                      $msg->message->text
-                      if $msg->message->text !~ /^eval:? on *$/;
+                            { $msg->message->user->{name} }{code} ||= [] },
+                        $msg->message->text
+                        if $msg->message->text !~ /^eval:? on *$/;
                 }
             }
         }
@@ -94,6 +94,10 @@ sub load {
 =head1 NAME
 
 Hubot::Scripts::eval
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,6 @@
 package Hubot::Scripts::backup;
 {
-  $Hubot::Scripts::backup::VERSION = '0.1.7';
+  $Hubot::Scripts::backup::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -31,6 +31,10 @@ sub load {
 =head1 NAME
 
 Hubot::Scripts::backup
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

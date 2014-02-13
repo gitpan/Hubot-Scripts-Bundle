@@ -1,91 +1,115 @@
 package Hubot::Scripts::sayhttpd;
 {
-  $Hubot::Scripts::sayhttpd::VERSION = '0.1.7';
+  $Hubot::Scripts::sayhttpd::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
-use JSON::XS;
+use Encode qw/decode_utf8/;
+use JSON;
 
 sub load {
-	my ( $class, $robot ) = @_;
-	$robot->httpd->reg_cb('/hubot/say' => sub {
-		my ($httpd, $req) = @_;
-		my $json = undef;
+    my ( $class, $robot ) = @_;
+    $robot->httpd->reg_cb(
+        '/hubot/say' => sub {
+            my ( $httpd, $req ) = @_;
+            my $json = undef;
 
-		eval {
-			$json = decode_json(join("", $req->params()));
-		};
-		if ($@) {
-			$req->respond([400, 'Bad Request', { content => 'text/json' }, "{ 'status': 'error', 'error': 'could not parse json' }"]);
-			return;
-		}
-		my $helper = Hubot::Scripts::sayhttpd::helper->new();
+            eval { $json = decode_json( join( "", $req->params() ) ); };
+            if ($@) {
+                $req->respond(
+                    [
+                        400,
+                        'Bad Request',
+                        { content => 'text/json' },
+                        "{ 'status': 'error', 'error': 'could not parse json' }"
+                    ]
+                );
+                return;
+            }
+            my $helper = Hubot::Scripts::sayhttpd::helper->new();
 
-		if ( ! $helper->checkRoom($json->{'room'})) {
-			$req->respond([400, 'Bad Request', { content => 'text/json' }, "{ 'status': 'error', 'error': 'missing room' }" ]);
-			return;
-		}
-		if ( ! $helper->checkSecret($json->{'secret'})) {
-			$req->respond([401, 'Unauthorized',  { content => 'text/json' }, "{ 'status': 'error', 'error': 'Secret missing/wrong/not set in ENV' }" ]);
-			return;
-		}
-		if ( ! $helper->checkMessage($json->{'message'})) {
-			$req->respond([400, 'Bad Request', { content => 'text/json' }, "{ 'status': 'error', 'error': 'missing message' }" ]);
-			return;
-		}
-		my $user = Hubot::User->new({
-			'room' => $json->{'room'}
-		});
-		$robot->adapter->send($user, $json->{'message'});
-		$req->respond( { content => [ 'text/json', "{ 'status': 'OK' }" ] } );
-	});
+            if ( !$helper->checkRoom( $json->{'room'} ) ) {
+                $req->respond(
+                    [
+                        400, 'Bad Request',
+                        { content => 'text/json' },
+                        "{ 'status': 'error', 'error': 'missing room' }"
+                    ]
+                );
+                return;
+            }
+            if ( !$helper->checkSecret( $json->{'secret'} ) ) {
+                $req->respond(
+                    [
+                        401,
+                        'Unauthorized',
+                        { content => 'text/json' },
+                        "{ 'status': 'error', 'error': 'Secret missing/wrong/not set in ENV' }"
+                    ]
+                );
+                return;
+            }
+            if ( !$helper->checkMessage( $json->{'message'} ) ) {
+                $req->respond(
+                    [
+                        400, 'Bad Request',
+                        { content => 'text/json' },
+                        "{ 'status': 'error', 'error': 'missing message' }"
+                    ]
+                );
+                return;
+            }
+            my $user = Hubot::User->new( { 'room' => $json->{'room'} } );
+            $robot->adapter->send( $user, decode_utf8( $json->{'message'} ) );
+            $req->respond(
+                { content => ['text/json', "{ 'status': 'OK' }"] } );
+        }
+    );
 }
 
 
 package Hubot::Scripts::sayhttpd::helper;
 {
-  $Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.7';
+  $Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
 
 sub new {
-	my $class = shift;
-	my $self = {
-		_secret => $ENV{HUBOT_SAY_HTTP_SECRET}
-	};
-	bless $self, $class;
-	return $self;
+    my $class = shift;
+    my $self = { _secret => $ENV{HUBOT_SAY_HTTP_SECRET} };
+    bless $self, $class;
+    return $self;
 }
 
 sub checkSecret {
-	my ($class, $secret) = @_;
-	unless ($secret) {
-		return undef;
-	}
-	unless ($class->{_secret}) {
-		return undef;
-	}
-	if ($secret eq $class->{_secret}) {
-		return 1;
-	}
-	return undef;
+    my ( $class, $secret ) = @_;
+    unless ($secret) {
+        return undef;
+    }
+    unless ( $class->{_secret} ) {
+        return undef;
+    }
+    if ( $secret eq $class->{_secret} ) {
+        return 1;
+    }
+    return undef;
 }
 
 sub checkRoom {
-	my ($class, $room) = @_;
-	if ($room && $room =~m /../) {
-		return 1;
-	}
-	return undef;
+    my ( $class, $room ) = @_;
+    if ( $room && $room =~ m /../ ) {
+        return 1;
+    }
+    return undef;
 }
 
 sub checkMessage {
-	my ($class, $message) = @_;
-	if ($message && $message =~m /../) {
-		return 1;
-	}
-	return undef;
+    my ( $class, $message ) = @_;
+    if ( $message && $message =~ m /../ ) {
+        return 1;
+    }
+    return undef;
 }
 
 1;
@@ -97,6 +121,10 @@ sub checkMessage {
 =head1 NAME
 
 Hubot::Scripts::sayhttpd
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 

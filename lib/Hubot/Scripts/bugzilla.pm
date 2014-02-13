@@ -1,11 +1,12 @@
 package Hubot::Scripts::bugzilla;
 {
-  $Hubot::Scripts::bugzilla::VERSION = '0.1.7';
+  $Hubot::Scripts::bugzilla::VERSION = '0.1.8';
 }
 use utf8;
 use strict;
 use warnings;
 use JSON::XS;
+use URI;
 
 my %PRIORITY_MAP = (
     '---'   => '☆☆☆☆☆',
@@ -30,7 +31,7 @@ sub load {
                     { ids => [$query] },
                     sub {
                         my ( $body, $hdr ) = @_;
-                        speak_bug( $msg, $body, $hdr );
+                        speak_bug( $msg, $body, $hdr, $client );
                     }
                 );
             }
@@ -46,7 +47,7 @@ sub load {
                 { summary => $msg->match->[0] },
                 sub {
                     my ( $body, $hdr ) = @_;
-                    speak_bug( $msg, $body, $hdr );
+                    speak_bug( $msg, $body, $hdr, $client );
                 }
             );
         }
@@ -59,10 +60,10 @@ sub load {
             $msg->message->finish;
             $client->call(
                 'Bug.get',
-                { ids => [ $msg->match->[0] ] },
+                { ids => [$msg->match->[0]] },
                 sub {
                     my ( $body, $hdr ) = @_;
-                    speak_bug( $msg, $body, $hdr );
+                    speak_bug( $msg, $body, $hdr, $client );
                 }
             );
         }
@@ -70,24 +71,31 @@ sub load {
 }
 
 sub speak_bug {
-    my ( $msg, $body, $hdr ) = @_;
+    my ( $msg, $body, $hdr, $client ) = @_;
     my $data = decode_json($body);
     my $bug = @{ $data->{result}{bugs} ||= [] }[0];
-    $msg->send(
-        sprintf "#%s [%s-%s] %s - [%s, %s, %s]",
-        $bug->{id},
-        $bug->{product},
-        $bug->{component},
-        $bug->{summary},
-        $bug->{status},
-        $bug->{assigned_to},
-        $PRIORITY_MAP{ $bug->{priority} }
-    ) if $bug;
+
+    if ($bug) {
+        $msg->send(
+            sprintf "#%s [%s-%s] %s - [%s, %s, %s]",
+            $bug->{id},
+            $bug->{product},
+            $bug->{component},
+            $bug->{summary},
+            $bug->{status},
+            $bug->{assigned_to},
+            $PRIORITY_MAP{ $bug->{priority} }
+        );
+
+        if ( $client->{quickserarch_url} ) {
+            $msg->send( sprintf $client->{quickserarch_url}, $bug->{id} );
+        }
+    }
 }
 
 package JSONRPC;
 {
-  $JSONRPC::VERSION = '0.1.7';
+  $JSONRPC::VERSION = '0.1.8';
 }
 use strict;
 use warnings;
@@ -99,6 +107,14 @@ sub new {
     $ref->{http} = AnyEvent::HTTP::ScopedClient->new( $ref->{url} );
     $ref->{username} ||= $ENV{HUBOT_BZ_USERNAME};
     $ref->{password} ||= $ENV{HUBOT_BZ_PASSWORD};
+
+    my $u = URI->new( $ref->{url} );
+    if ( $u->path eq '/jsonrpc.cgi' ) {
+        $u->path('/buglist.cgi');
+        $u->query('quicksearch=%s');
+        $ref->{quickserarch_url} = $u;
+    }
+
     my $self = bless $ref, $class;
     $self->login if $ref->{username} && $ref->{password};
     return $self;
@@ -106,8 +122,8 @@ sub new {
 
 sub call {
     my ( $self, $method, $params, $cb ) = @_;
-    $params =
-      encode_json( { method => $method, params => $params, version => '1.1' } );
+    $params = encode_json(
+        { method => $method, params => $params, version => '1.1' } );
     $self->{http}->header(
         {
             cookie => $self->{cookie} || '',
@@ -115,13 +131,13 @@ sub call {
             'Content-Type' => 'application/json',
             'User-Agent'   => 'p5-hubot-bugzilla-script-jsonrpc-client',
         }
-      )->post(
+        )->post(
         $params,
         sub {
             my ( $body, $hdr ) = @_;
             $cb->( $body, $hdr ) if $hdr->{Status} =~ m/^2/;
         }
-      );
+        );
 }
 
 sub set_cookies {
@@ -133,10 +149,7 @@ sub login {
     my $self = shift;
     $self->call(
         'User.login',
-        {
-            login    => $self->{username},
-            password => $self->{password}
-        },
+        { login => $self->{username}, password => $self->{password} },
         sub {
             my ( $body, $hdr ) = @_;
             $self->set_cookies($hdr);
@@ -149,6 +162,10 @@ sub login {
 =head1 NAME
 
 Hubot::Scripts::bugzilla
+
+=head1 VERSION
+
+version 0.1.8
 
 =head1 SYNOPSIS
 
