@@ -1,7 +1,5 @@
 package Hubot::Scripts::print;
-{
-  $Hubot::Scripts::print::VERSION = '0.1.8';
-}
+$Hubot::Scripts::print::VERSION = '0.1.9';
 use strict;
 use warnings;
 use JSON::XS;
@@ -35,7 +33,7 @@ Hubot::Scripts::print
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

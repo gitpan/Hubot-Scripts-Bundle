@@ -1,7 +1,5 @@
 package Hubot::Scripts::sayhttpd;
-{
-  $Hubot::Scripts::sayhttpd::VERSION = '0.1.8';
-}
+$Hubot::Scripts::sayhttpd::VERSION = '0.1.9';
 use strict;
 use warnings;
 use Encode qw/decode_utf8/;
@@ -14,7 +12,7 @@ sub load {
             my ( $httpd, $req ) = @_;
             my $json = undef;
 
-            eval { $json = decode_json( join( "", $req->params() ) ); };
+            eval { $json = decode_json( $req->{content} ); };
             if ($@) {
                 $req->respond(
                     [
@@ -69,9 +67,7 @@ sub load {
 
 
 package Hubot::Scripts::sayhttpd::helper;
-{
-  $Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.8';
-}
+$Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.9';
 use strict;
 use warnings;
 
@@ -124,7 +120,7 @@ Hubot::Scripts::sayhttpd
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 
@@ -142,7 +138,9 @@ HTTP Say Interface with SERECT file.
 
 =head1 JSON API
 
-  curl -X POST -d '{"room": "#test-channel", "secret": "foobar", "message": "Hello from JSON" }' http://localhost:8080/hubot/say
+  Please ensure that the http client sending Content-Type "application/json".
+
+  curl -H 'Content-Type: application/json' -d '{"room": "#test-channel", "secret": "foobar", "message": "Hello from JSON" }' http://localhost:8080/hubot/say
 
 =head1 AUTHOR
 

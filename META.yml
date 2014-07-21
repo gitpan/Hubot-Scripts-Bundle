@@ -6,26 +6,26 @@ author:
   - 'Jonas Genannt <jonas@brachium-system.net>'
 build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  ExtUtils::MakeMaker: '6.30'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.141520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Hubot-Scripts-Bundle
 requires:
-  AnyEvent: 0
-  AnyEvent::HTTP::ScopedClient: 0
-  DateTime: 0
-  DateTime::Format::Duration: 0
-  Encode: 0
-  JSON: 0
-  JSON::XS: 0
-  Lingua::KO::Hangul::Util: 0
-  List::Util: 0
-  Redis: 0
-  Storable: 0
-  Try::Tiny: 0
-  URI: 0
-version: 0.1.8
+  AnyEvent: '0'
+  AnyEvent::HTTP::ScopedClient: '0'
+  DateTime: '0'
+  DateTime::Format::Duration: '0'
+  Encode: '0'
+  JSON: '0'
+  JSON::XS: '0'
+  Lingua::KO::Hangul::Util: '0'
+  List::Util: '0'
+  Redis: '0'
+  Storable: '0'
+  Try::Tiny: '0'
+  URI: '0'
+version: 0.1.9

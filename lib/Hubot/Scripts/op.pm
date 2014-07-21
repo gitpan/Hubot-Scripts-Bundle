@@ -1,7 +1,5 @@
 package Hubot::Scripts::op;
-{
-  $Hubot::Scripts::op::VERSION = '0.1.8';
-}
+$Hubot::Scripts::op::VERSION = '0.1.9';
 use strict;
 use warnings;
 
@@ -55,7 +53,7 @@ Hubot::Scripts::op
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

@@ -1,7 +1,5 @@
 package Hubot::Scripts::ping;
-{
-  $Hubot::Scripts::ping::VERSION = '0.1.8';
-}
+$Hubot::Scripts::ping::VERSION = '0.1.9';
 use strict;
 use warnings;
 
@@ -25,7 +23,7 @@ Hubot::Scripts::ping
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

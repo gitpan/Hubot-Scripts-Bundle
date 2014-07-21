@@ -1,7 +1,5 @@
 package Hubot::Scripts::googleImage;
-{
-  $Hubot::Scripts::googleImage::VERSION = '0.1.8';
-}
+$Hubot::Scripts::googleImage::VERSION = '0.1.9';
 use strict;
 use warnings;
 use JSON::XS;
@@ -78,7 +76,7 @@ Hubot::Scripts::googleImage - A way to interact with the Google Images API.
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

@@ -1,7 +1,5 @@
 package Hubot::Scripts::bugzilla;
-{
-  $Hubot::Scripts::bugzilla::VERSION = '0.1.8';
-}
+$Hubot::Scripts::bugzilla::VERSION = '0.1.9';
 use utf8;
 use strict;
 use warnings;
@@ -94,9 +92,7 @@ sub speak_bug {
 }
 
 package JSONRPC;
-{
-  $JSONRPC::VERSION = '0.1.8';
-}
+$JSONRPC::VERSION = '0.1.9';
 use strict;
 use warnings;
 use AnyEvent::HTTP::ScopedClient;
@@ -165,7 +161,7 @@ Hubot::Scripts::bugzilla
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

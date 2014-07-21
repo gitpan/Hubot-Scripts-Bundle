@@ -1,7 +1,5 @@
 package Hubot::Scripts::backup;
-{
-  $Hubot::Scripts::backup::VERSION = '0.1.8';
-}
+$Hubot::Scripts::backup::VERSION = '0.1.9';
 use strict;
 use warnings;
 use AnyEvent;
@@ -34,7 +32,7 @@ Hubot::Scripts::backup
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 

@@ -1,7 +1,5 @@
 package Hubot::Scripts::eval;
-{
-  $Hubot::Scripts::eval::VERSION = '0.1.8';
-}
+$Hubot::Scripts::eval::VERSION = '0.1.9';
 use strict;
 use warnings;
 use JSON::XS;
@@ -97,7 +95,7 @@ Hubot::Scripts::eval
 
 =head1 VERSION
 
-version 0.1.8
+version 0.1.9
 
 =head1 SYNOPSIS
 
