@@ -1,5 +1,5 @@
 package Hubot::Scripts::redisBrain;
-$Hubot::Scripts::redisBrain::VERSION = '0.1.9';
+$Hubot::Scripts::redisBrain::VERSION = '0.1.10';
 use strict;
 use warnings;
 use Redis;
@@ -32,7 +32,7 @@ Hubot::Scripts::redisBrain
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

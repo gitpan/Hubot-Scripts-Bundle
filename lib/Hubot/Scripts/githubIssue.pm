@@ -1,5 +1,5 @@
 package Hubot::Scripts::githubIssue;
-$Hubot::Scripts::githubIssue::VERSION = '0.1.9';
+$Hubot::Scripts::githubIssue::VERSION = '0.1.10';
 use strict;
 use warnings;
 use JSON;
@@ -44,7 +44,7 @@ sub load {
 }
 
 package githubot;
-$githubot::VERSION = '0.1.9';
+$githubot::VERSION = '0.1.10';
 use strict;
 use warnings;
 use AnyEvent::HTTP::ScopedClient;
@@ -109,7 +109,7 @@ Hubot::Scripts::githubIssue
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

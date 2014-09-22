@@ -1,5 +1,5 @@
 package Hubot::Scripts::macboogi;
-$Hubot::Scripts::macboogi::VERSION = '0.1.9';
+$Hubot::Scripts::macboogi::VERSION = '0.1.10';
 use utf8;
 use strict;
 use warnings;
@@ -74,7 +74,7 @@ Hubot::Scripts::macboogi
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

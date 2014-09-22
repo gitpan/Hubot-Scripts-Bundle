@@ -1,5 +1,5 @@
 package Hubot::Scripts::tell;
-$Hubot::Scripts::tell::VERSION = '0.1.9';
+$Hubot::Scripts::tell::VERSION = '0.1.10';
 use strict;
 use warnings;
 use DateTime;
@@ -58,7 +58,7 @@ Hubot::Scripts::tell
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

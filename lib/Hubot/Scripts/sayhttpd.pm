@@ -1,5 +1,5 @@
 package Hubot::Scripts::sayhttpd;
-$Hubot::Scripts::sayhttpd::VERSION = '0.1.9';
+$Hubot::Scripts::sayhttpd::VERSION = '0.1.10';
 use strict;
 use warnings;
 use Encode qw/decode_utf8/;
@@ -67,7 +67,7 @@ sub load {
 
 
 package Hubot::Scripts::sayhttpd::helper;
-$Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.9';
+$Hubot::Scripts::sayhttpd::helper::VERSION = '0.1.10';
 use strict;
 use warnings;
 
@@ -120,7 +120,7 @@ Hubot::Scripts::sayhttpd
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

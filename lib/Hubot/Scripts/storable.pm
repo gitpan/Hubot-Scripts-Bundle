@@ -1,5 +1,5 @@
 package Hubot::Scripts::storable;
-$Hubot::Scripts::storable::VERSION = '0.1.9';
+$Hubot::Scripts::storable::VERSION = '0.1.10';
 use strict;
 use warnings;
 use Storable;
@@ -27,7 +27,7 @@ Hubot::Scripts::storable
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

@@ -1,9 +1,9 @@
 package Hubot::Scripts::bugzilla;
-$Hubot::Scripts::bugzilla::VERSION = '0.1.9';
+$Hubot::Scripts::bugzilla::VERSION = '0.1.10';
 use utf8;
 use strict;
 use warnings;
-use JSON::XS;
+use JSON;
 use URI;
 
 my %PRIORITY_MAP = (
@@ -92,7 +92,7 @@ sub speak_bug {
 }
 
 package JSONRPC;
-$JSONRPC::VERSION = '0.1.9';
+$JSONRPC::VERSION = '0.1.10';
 use strict;
 use warnings;
 use AnyEvent::HTTP::ScopedClient;
@@ -118,6 +118,7 @@ sub new {
 
 sub call {
     my ( $self, $method, $params, $cb ) = @_;
+    $params->{Bugzilla_token} = $self->{token} if $self->{token};
     $params = encode_json(
         { method => $method, params => $params, version => '1.1' } );
     $self->{http}->header(
@@ -136,6 +137,22 @@ sub call {
         );
 }
 
+sub set_cookies_or_token {
+    my ( $self, $hdr, $body ) = @_;
+    if ( $hdr->{'set-cookie'} ) {
+        $self->set_cookies($hdr);
+    }
+    else {
+        my $data = decode_json($body);
+        $self->set_token( $data->{result}{token} );
+    }
+}
+
+sub set_token {
+    my ( $self, $token ) = @_;
+    $self->{token} = $token;
+}
+
 sub set_cookies {
     my ( $self, $hdr ) = @_;
     $self->{cookie} = $hdr->{'set-cookie'};
@@ -148,7 +165,7 @@ sub login {
         { login => $self->{username}, password => $self->{password} },
         sub {
             my ( $body, $hdr ) = @_;
-            $self->set_cookies($hdr);
+            $self->set_cookies_or_token( $hdr, $body );
         }
     );
 }
@@ -161,7 +178,7 @@ Hubot::Scripts::bugzilla
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

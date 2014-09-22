@@ -1,5 +1,5 @@
 package Hubot::Scripts::uptime;
-$Hubot::Scripts::uptime::VERSION = '0.1.9';
+$Hubot::Scripts::uptime::VERSION = '0.1.10';
 use strict;
 use warnings;
 use DateTime;
@@ -37,7 +37,7 @@ Hubot::Scripts::uptime
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

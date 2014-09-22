@@ -1,5 +1,5 @@
 package Hubot::Scripts::blacklist;
-$Hubot::Scripts::blacklist::VERSION = '0.1.9';
+$Hubot::Scripts::blacklist::VERSION = '0.1.10';
 use strict;
 use warnings;
 use Try::Tiny;
@@ -150,7 +150,7 @@ Hubot::Scripts::blacklist
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 

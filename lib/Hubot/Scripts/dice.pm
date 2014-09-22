@@ -1,5 +1,5 @@
 package Hubot::Scripts::dice;
-$Hubot::Scripts::dice::VERSION = '0.1.9';
+$Hubot::Scripts::dice::VERSION = '0.1.10';
 use strict;
 use warnings;
 use List::Util qw/shuffle/;
@@ -33,7 +33,7 @@ Hubot::Scripts::dice
 
 =head1 VERSION
 
-version 0.1.9
+version 0.1.10
 
 =head1 SYNOPSIS
 
